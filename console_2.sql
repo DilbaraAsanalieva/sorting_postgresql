@@ -16,24 +16,20 @@ VALUES('iPhone X', 'Apple', 3, 76000, false),
     ('Desire 12', 'HTC', 5, 28000, true),
     ('Nokia 9', 'HMD Global', 6, 38000, true);
 
-SELECT * FROM products WHERE company NOT LIKE 'HTC';
-SELECT * FROM products WHERE company = 'Apple' AND price < 75000;
-SELECT * FROM products WHERE price >= 46000;
-SELECT * FROM products MAX(price); --4
-SELECT COUNT(*) as price,
-       MIN(price) AS minimun_price
-FROM products; --5
-
-SELECT * FROM products WHERE isDiscounted = 'true';
-SELECT * FROM products WHERE isDiscounted = 'false';
 
 
+--STARTING MANIPULATING
 
---9
-SELECT COUNT(*) FROM products SUM(price);
+SELECT * FROM products WHERE company NOT LIKE 'HTC'; --1
+SELECT * FROM products WHERE company = 'Apple' AND price < 75000;--2
+SELECT * FROM products WHERE price >= 46000; --3
+SELECT * FROM products ORDER BY price DESC LIMIT 2; --4
+SELECT * FROM products ORDER BY price ASC LIMIT 1; --5
+SELECT * FROM products WHERE isDiscounted = 'true';--6
+SELECT * FROM products WHERE isDiscounted = 'false'; --7
+SELECT * FROM products ORDER BY price DESC; --8
+SELECT SUM(price) FROM products; --9
+SELECT * FROM products WHERE productCount <=2;--10
 
-SELECT productCount, COUNT(*) AS company_count --10
-FROM products
-GROUP BY productCount
-HAVING COUNT(*) <= 2;
+
 
